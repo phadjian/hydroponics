@@ -11,15 +11,15 @@
 
 #define MAXTIMINGS 85
 
-#define DHTPIN 1
-//#define DHTPIN 7
+//#define DHTPIN 1
+#define DHTPIN 7
 
 int dht11_dat[5] = {0,0,0,0,0};
 
 void read_dht11_dat()
 {
 	uint8_t laststate = HIGH;
-	uint8_t counter = 0;
+	uint16_t counter = 0;
 	uint8_t j = 0, i;
 	float f; // fahrenheit
 
@@ -40,6 +40,7 @@ void read_dht11_dat()
 		counter = 0;
 		while (digitalRead(DHTPIN) == laststate) {
 			counter++;
+			//printf("%d\n", counter);
 			delayMicroseconds(1);
 			if (counter == 255) {
 				break;
@@ -53,12 +54,18 @@ void read_dht11_dat()
 		if ((i >= 4) && (i%2 == 0)) {
 			// shove each bit into the storage bytes
 			dht11_dat[j/8] <<= 1;
-			if (counter > 16)
+			if (counter > 50)
 				dht11_dat[j/8] |= 1;
 			j++;
 		}
 	}
-
+	
+	//printf("dht11_dat0=%d\n", dht11_dat[0]);
+	//printf("dht11_dat1=%d\n", dht11_dat[1]);
+	//printf("dht11_dat2=%d\n", dht11_dat[2]);
+	//printf("dht11_dat3=%d\n", dht11_dat[3]);
+	//printf("j=%d\n", j);
+	
 	// check we read 40 bits (8bit x 5 ) + verify checksum in the last byte
 	// print it out if data is good
 	if ((j >= 40) && 
@@ -69,7 +76,7 @@ void read_dht11_dat()
 	}
 	else
 	{
-		printf("Data not good, skip\n");
+		//printf("Data not good, skip\n");
 	}
 }
 
