@@ -2,6 +2,7 @@
  *   dht11.c:
  *   Simple test program to test the wiringPi functions
  *   DHT11 test
+ * 	 https://www.circuitbasics.com/how-to-set-up-the-dht11-humidity-sensor-on-the-raspberry-pi/
  */
 
 #include <wiringPi.h>
@@ -16,7 +17,7 @@
 
 int dht11_dat[5] = {0,0,0,0,0};
 
-void read_dht11_dat()
+int read_dht11_dat()
 {
 	uint8_t laststate = HIGH;
 	uint16_t counter = 0;
@@ -73,10 +74,16 @@ void read_dht11_dat()
 		f = dht11_dat[2] * 9. / 5. + 32;
 		printf("Humidity = %d.%d %% Temperature = %d.%d *C (%.1f *F)\n", 
 				dht11_dat[0], dht11_dat[1], dht11_dat[2], dht11_dat[3], f);
+		if (f < 60) {
+			return 1;
+		} else if (f > 70) {
+			return 2;
+		}
+		return 0;
 	}
 	else
 	{
-		//printf("Data not good, skip\n");
+		return 0;
 	}
 }
 
@@ -87,11 +94,14 @@ int main (void)
 
 	if (wiringPiSetup () == -1)
 		exit (1) ;
-
+	
+	int value = 0;
+	
 	while (1) 
 	{
-		read_dht11_dat();
-		delay(1000); // wait 1sec to refresh
+		value = read_dht11_dat();
+		printf("value = %d\n", value);
+		delay(5000); // wait 5sec to refresh
 	}
 
 	return 0 ;
