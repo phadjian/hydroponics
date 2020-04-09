@@ -1,12 +1,12 @@
 # Guide from: https://projects.raspberrypi.org/en/projects/python-web-server-with-flask/1
 
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return 'Hello friends!'
+	return render_template('index.html')
 
 @app.route('/test')
 def test():
