@@ -3,35 +3,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Basic Bootstrap Template</title>
+    <title>Hydroponics System Info</title>
     <!-- Bootstrap CSS file -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-	<!--
-    <h1>Hello, world!</h1>
-    <div class="container">
-    	<div class="row">
-        	<div class="col-lg-4"><p>Box 1</p></div>
-        	<div class="col-lg-4"><p>Box 2</p></div>
-        	<div class="col-lg-4"><p>Box 3</p></div>
-        	<div class="col-lg-4"><p>Box 4</p></div>
-        	<div class="col-lg-4"><p>Box 5</p></div>
-        	<div class="col-lg-4"><p>Box 6</p></div>
-        	<div class="col-lg-4"><p>Box 7</p></div>
-        	<div class="col-lg-4"><p>Box 8</p></div>
-        	<div class="col-lg-4"><p>Box 9</p></div>
-        	<div class="col-lg-4"><p>Box 10</p></div>
-        	<div class="col-lg-4"><p>Box 11</p></div>
-        	<div class="col-lg-4"><p>Box 12</p></div>
-    	</div>
-    </div>-->
-    <!-- Page Content -->
 <div class="container">
 
   <!-- Page Heading -->
-  <h1 class="my-4">Page Heading
-    <small>Secondary Text</small>
+  <h1 class="my-4">My Hydroponics Box
+    <small>Last Updated: <span id="datetime"></span></small>
+	<script>
+		var dt = new Date();
+		document.getElementById("datetime").innerHTML = dt.toLocaleString();
+	</script>
   </h1>
 
   <div class="row">
