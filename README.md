@@ -21,9 +21,11 @@ C program that puts humidity and temp on lcd screen.
 ### app.py
 python file that runs the Flask code to start a web server on the pi.
 
-### templates:
 ### index.html:
 used for testing
 
 ### newPage.html:
-html bootstrap file that will be used to display sensor/actuator info and possibly change things
+html bootstrap file that will be used to display sensor/actuator info
+
+## data
+These .txt files contain single value data points that the website uses and potentially other snippets of code.
