@@ -1,0 +1,25 @@
+ections of code:
+
+Main entry (sofia): 
+	Asks user/tester what they would like to do. Options include:
+		1. Simulate
+		2. Read sensor/write actuator
+		3. Run main loop
+
+Simulate:
+	From here, the tester can select how they'd like to simulate input (random or realistic). Then, the tester will select how quickly to progress through time. The simulated input would then be read in, and when actuator output is set, it will be displayed as so.
+
+Read sensor/write actuator data:
+	This is for debugging the physical sensors and actuators. The user will be allowed to pick sensor/actuator and either see the sensor value or set an actuator output.
+
+Run main loop:
+	Performs the 'main' code in real time. 
+
+
+----------------------------------------------------------------------------
+Simulate/main loop ideas:
+
+Germination step (paniz)
+
+State machine:
+	(in progress)
